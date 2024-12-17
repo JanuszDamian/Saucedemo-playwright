@@ -4,7 +4,7 @@
   "description": "Automated software testing with playwright",
   "main": "index.js",
   "scripts": {
-    "test:chrome": "playwright test --config=playwright.config.ts --project=Chromium",
+    "test:chrome": "playwright test --config=playwright.config.ts --project=Chromium --reporter=html",
     "test:firefox": "playwright test --config=playwright.config.ts --project=Firefox",
     "test:webkit": "playwright test --config=playwright.config.ts --project=Webkit"
   },
