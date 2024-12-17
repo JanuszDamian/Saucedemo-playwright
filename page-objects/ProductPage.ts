@@ -55,7 +55,7 @@ export class ProductPage {
         this.onesieLink = page.locator('text=Sauce Labs Onesie')
         this.onesieRemoveButton = page.locator('#remove-sauce-labs-onesie')
         this.onesiePrice = page.locator('')
-        this.redTShirtAddButton = page.locator('#add-to-cart-test.allthethings()-t-shirt-(red)')
+        this.redTShirtAddButton = page.locator('#add\-to\-cart\-test\.allthethings\(\)\-t\-shirt\-\(red\)')
         this.redTShirtLink = page.locator('text=Test.allTheThings() T-Shirt (Red)')
         this.redTShirtRemoveButton = page.locator('#remove-test.allthethings()-t-shirt-(red)')
         this.redTShirtPrice = page.locator('')
