@@ -47,7 +47,7 @@ export class ProductPage {
         this.boltTShirtLink = page.locator('text=Sauce Labs Bolt T-Shirt')
         this.boltTshirtRemoveButton = page.locator('#remove-sauce-labs-bolt-t-shirt')
         this.boltTshirtPrice = page.locator('')
-        this.fleeceJacketAddButton = page.locator('add-to-cart-sauce-labs-fleece-jacket')
+        this.fleeceJacketAddButton = page.locator('#add-to-cart-sauce-labs-fleece-jacket')
         this.fleeceJacketLink = page.locator('text=Sauce Labs Fleece Jacket')
         this.fleeceJacketRemoveButton = page.locator('#remove-sauce-labs-fleece-jacket')
         this.fleeceJacketPrice = page.locator('')
@@ -68,9 +68,13 @@ export class ProductPage {
         await expect(this.shoppingCartButton).toBeVisible
     }
 
-    async addBackpackToCart() {
-        const getBackpackPrice = await this.backpackAddButton.innerText()
-        await this.backpackAddButton.click
-        await expect(this.shoppingCartBadgeIcon).toBeVisible
+    async addAllProductToCart() {
+        await this.backpackAddButton.click()
+        await this.bikeLightAddButton.click()
+        await this.boltTShirtAddButton.click()
+        await this.fleeceJacketAddButton.click()
+        await this.onesieAddButton.click()
+        await this.redTShirtAddButton.click()
+        await expect(this.shoppingCartBadgeIcon).toHaveText('6')
     }
 }

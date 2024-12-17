@@ -12,12 +12,13 @@ test.describe.parallel.only('Login flow', () => {
         productPage = new ProductPage(page)
 
         await loginPage.visit()
-        await loginPage.assertTitle()
+        await loginPage.login("standard_user", "secret_sauce")
+        await productPage.assertLoginUser()
     })
 
     // Positive Scenario
 
-    test('Add product to cart', async ({page}) => {
-        await productPage.addBackpackToCart()
+    test('Add all product to cart', async ({page}) => {
+        await productPage.addAllProductToCart()
     })
 })
