@@ -6,7 +6,7 @@ import { CheckoutPage } from '../page-objects/CheckoutPage'
 import { OverviewPage } from '../page-objects/OverviewPage'
 import { CompletePage } from '../page-objects/CompletePage'
 
-test.describe.parallel.only('Negative tests', () => {
+test.describe.parallel('Negative tests', () => {
     let loginPage: LoginPage
     let productPage: ProductPage
     let cartPage: CartPage

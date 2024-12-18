@@ -1,6 +1,6 @@
 import {expect, Locator, Page } from '@playwright/test'
 
-export class LoginPage {
+export default class LoginPage {
     // Define Selectors
     readonly page: Page
     readonly usernameInput: Locator
@@ -8,6 +8,7 @@ export class LoginPage {
     readonly loginButton: Locator
     readonly errorMessage: Locator
     readonly titleText: Locator
+    readonly loginForm: Locator
 
     // Init selectors using constructor
     constructor(page: Page) {
@@ -17,6 +18,7 @@ export class LoginPage {
         this.loginButton = page.locator('#login-button')
         this.errorMessage = page.locator('h3')
         this.titleText = page.locator('text=Swag Labs')
+        this.loginForm = page.locator('#login_button_container')
     }
 
     // Define login page methods 
@@ -42,5 +44,13 @@ export class LoginPage {
 
     async assertErrorMessage() {
         await expect(this.errorMessage).toContainText('Epic sadface: Username and password do not match any user in this service')
+    }
+
+    async snapshotLoginForm() {
+        expect(await this.loginForm.screenshot()).toMatchSnapshot('login-form.png')
+    }
+
+    async snapshotErrorMessage() {
+        expect(await this.errorMessage.screenshot()).toMatchSnapshot('login-error.png')
     }
 }
