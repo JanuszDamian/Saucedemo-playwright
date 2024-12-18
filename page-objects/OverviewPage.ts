@@ -10,14 +10,14 @@ export class OverviewPage {
     // Init selectors using constructor
     constructor(page: Page) {
         this.page = page
-        this.overviewPageTitle = page.locator('#header_container text="Checkout: Overview"')
+        this.overviewPageTitle = page.locator('#header_container span:has-text("Checkout: Overview")')
         this.finishButton = page.locator('#finish')
         this.cancelButton = page.locator('#cancel')
     }
 
     // Define login page methods 
     async assertOverviewPage() {
-        await this.page.waitForSelector('#header_container text="Checkout: Overview"', {state: 'visible'})
+        await this.page.waitForSelector('#header_container span:has-text("Checkout: Overview")', {state: 'visible'})
         await expect(this.overviewPageTitle).toBeVisible
     }
 

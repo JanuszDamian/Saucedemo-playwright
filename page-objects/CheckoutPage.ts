@@ -14,8 +14,8 @@ export class CheckoutPage {
     // Init selectors using constructor
     constructor(page: Page) {
         this.page = page
-        this.checkoutPageTitle = page.locator('#header_container text="Checkout: Your Information"')
-        this.firstNameInput = page.locator('#firstName')
+        this.checkoutPageTitle = page.locator('#header_container span:has-text("Checkout: Your Information")')
+        this.firstNameInput = page.locator('#first-name')
         this.lastNameInput = page.locator('#last-name')
         this.zipCodeInput = page.locator('#postal-code')
         this.continuceButton = page.locator('#continue')
@@ -25,7 +25,7 @@ export class CheckoutPage {
 
     // Define login page methods 
     async assertCheckoutPage() {
-        await this.page.waitForSelector('#header_container text="Checkout: Your Information"', {state: 'visible'})
+        await this.page.waitForSelector('#header_container span:has-text("Checkout: Your Information")', {state: 'visible'})
         await expect(this.checkoutPageTitle).toBeVisible
     }
 

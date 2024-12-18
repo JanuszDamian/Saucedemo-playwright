@@ -16,7 +16,7 @@ export class CartPage {
     // Init selectors using constructor
     constructor(page: Page) {
         this.page = page
-        this.cartPageTitle = page.locator('#header_container text="Your Cart"')
+        this.cartPageTitle = page.locator('#header_container span:has-text("Your Cart")')
         this.continueShopButton = page.locator('#continue-shopping')
         this.checkoutButton = page.locator('#checkout')
         this.backPackRemoveButton = page.locator('#remove-sauce-labs-backpack')
@@ -29,7 +29,7 @@ export class CartPage {
 
     // Define login page methods 
     async assertCartPage() {
-        await this.page.waitForSelector('#header_container text="Your Cart"', {state: 'visible'})
+        await this.page.waitForSelector('#header_container span:has-text("Your Cart")', {state: 'visible'})
         await expect(this.cartPageTitle).toBeVisible
     }
 

@@ -10,14 +10,14 @@ export class CompletePage {
     // Init selectors using constructor
     constructor(page: Page) {
         this.page = page
-        this.completePageTitle = page.locator('#header_container text="Checkout: Complete!"')
+        this.completePageTitle = page.locator('#header_container span:has-text("Checkout: Complete!")')
         this.backButton = page.locator('#back-to-products')
         this.completeConfirm = page.locator('#checkout_complete_container')
     }
 
     // Define login page methods 
     async assertCompletePage() {
-        await this.page.waitForSelector('#header_container text="Checkout: Complete!"', {state: 'visible'})
+        await this.page.waitForSelector('#header_container span:has-text("Checkout: Complete!")', {state: 'visible'})
         await expect(this.completePageTitle).toBeVisible
     }
     
