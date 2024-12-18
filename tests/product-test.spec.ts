@@ -2,7 +2,7 @@ import { test } from '@playwright/test'
 import { LoginPage } from '../page-objects/LoginPage'
 import { ProductPage } from '../page-objects/ProductPage'
 
-test.describe.parallel.only('Login flow', () => {
+test.describe.parallel('Login flow', () => {
     let loginPage: LoginPage
     let productPage: ProductPage
 
@@ -18,7 +18,8 @@ test.describe.parallel.only('Login flow', () => {
 
     // Positive Scenario
 
-    test('Add all product to cart', async ({page}) => {
-        await productPage.addAllProductToCart()
+    test('Add/remove all products to/from cart ', async ({page}) => {
+        await productPage.addAllProductsToCart()
+        await productPage.removeAllProductsFromCart()
     })
 })

@@ -55,9 +55,9 @@ export class ProductPage {
         this.onesieLink = page.locator('text=Sauce Labs Onesie')
         this.onesieRemoveButton = page.locator('#remove-sauce-labs-onesie')
         this.onesiePrice = page.locator('')
-        this.redTShirtAddButton = page.locator('#add\-to\-cart\-test\.allthethings\(\)\-t\-shirt\-\(red\)')
+        this.redTShirtAddButton = page.locator('#inventory_container button[id*="red"]')
         this.redTShirtLink = page.locator('text=Test.allTheThings() T-Shirt (Red)')
-        this.redTShirtRemoveButton = page.locator('#remove-test.allthethings()-t-shirt-(red)')
+        this.redTShirtRemoveButton = page.locator('#inventory_container button[id*="red"]')
         this.redTShirtPrice = page.locator('')
     }
         
@@ -68,7 +68,7 @@ export class ProductPage {
         await expect(this.shoppingCartButton).toBeVisible
     }
 
-    async addAllProductToCart() {
+    async addAllProductsToCart() {
         await this.backpackAddButton.click()
         await this.bikeLightAddButton.click()
         await this.boltTShirtAddButton.click()
@@ -76,5 +76,19 @@ export class ProductPage {
         await this.onesieAddButton.click()
         await this.redTShirtAddButton.click()
         await expect(this.shoppingCartBadgeIcon).toHaveText('6')
+    }
+
+    async removeAllProductsFromCart() {
+        await this.backpackRemoveButton.click()
+        await this.bikeLightRemoveButton.click()
+        await this.boltTshirtRemoveButton.click()
+        await this.fleeceJacketRemoveButton.click()
+        await this.onesieRemoveButton.click()
+        await this.redTShirtRemoveButton.click()
+        await expect(this.shoppingCartBadgeIcon).toBeHidden
+    }
+
+    async goToCartPage() {
+        await this.shoppingCartButton.click()
     }
 }
