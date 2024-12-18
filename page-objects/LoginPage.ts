@@ -29,6 +29,11 @@ export class LoginPage {
         expect(this.titleText).toBeVisible
     }
 
+    async assertloginPage() {
+        await this.page.waitForSelector('#login-button')
+        expect(this.loginButton).toBeVisible
+    }
+
     async login(username: string, password: string) {
         await this.usernameInput.fill(username)
         await this.passwordInput.fill(password)

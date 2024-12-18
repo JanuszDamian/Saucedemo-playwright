@@ -2,7 +2,7 @@ import { test } from '@playwright/test'
 import { LoginPage } from '../page-objects/LoginPage'
 import { ProductPage } from '../page-objects/ProductPage'
 
-test.describe.parallel('Login flow', () => {
+test.describe.parallel('ProductPage tests', () => {
     let loginPage: LoginPage
     let productPage: ProductPage
 
@@ -20,6 +20,8 @@ test.describe.parallel('Login flow', () => {
 
     test('Add/remove all products to/from cart ', async ({page}) => {
         await productPage.addAllProductsToCart()
+        await productPage.assertAllProductsInCart()
         await productPage.removeAllProductsFromCart()
+        await productPage.assertBadgeIcon()
     })
 })

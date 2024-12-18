@@ -6,7 +6,7 @@ import { CheckoutPage } from '../page-objects/CheckoutPage'
 import { OverviewPage } from '../page-objects/OverviewPage'
 import { CompletePage } from '../page-objects/CompletePage'
 
-test.describe.parallel.only('Login flow', () => {
+test.describe.parallel('E2E tests', () => {
     let loginPage: LoginPage
     let productPage: ProductPage
     let cartPage: CartPage
@@ -29,9 +29,9 @@ test.describe.parallel.only('Login flow', () => {
     })
 
     // Positive Scenario
-
     test('Buy all products', async ({page}) => {
         await productPage.addAllProductsToCart()
+        await productPage.assertAllProductsInCart()
         await productPage.goToCartPage()
         await cartPage.assertCartPage()
         await cartPage.checkout()
@@ -44,4 +44,22 @@ test.describe.parallel.only('Login flow', () => {
         await completePage.backHome()
         await productPage.assertLoginUser()
     })
+
+    test('Cancel transaction at overviewPage', async ({page}) => {
+        await productPage.addAllProductsToCart()
+        await productPage.goToCartPage()
+        await cartPage.assertCartPage()
+        await cartPage.checkout()
+        await checkoutPage.assertCheckoutPage()
+        await checkoutPage.fillForm("Tomasz", "Damian", "15-800")
+        await overviewPage.assertOverviewPage()
+        await overviewPage.Cancel()
+        await productPage.assertLoginUser()
+    })
+
+        // After Hook
+        test.afterEach(async ({ page }) => {
+            await productPage.logout()
+            await loginPage.assertloginPage()
+        })
 })

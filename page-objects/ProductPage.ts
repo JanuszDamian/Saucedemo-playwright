@@ -29,6 +29,8 @@ export class ProductPage {
     readonly redTShirtLink: Locator
     readonly redTShirtRemoveButton: Locator
     readonly redTShirtPrice: Locator
+    readonly menuButton: Locator
+    readonly logoutButton: Locator
 
     // Init selectors using constructor
     constructor(page: Page) {
@@ -59,6 +61,8 @@ export class ProductPage {
         this.redTShirtLink = page.locator('text=Test.allTheThings() T-Shirt (Red)')
         this.redTShirtRemoveButton = page.locator('#inventory_container button[id*="red"]')
         this.redTShirtPrice = page.locator('')
+        this.menuButton = page.locator('#react-burger-menu-btn')
+        this.logoutButton = page.locator('#logout_sidebar_link')
     }
         
     // Define login page methods 
@@ -75,6 +79,9 @@ export class ProductPage {
         await this.fleeceJacketAddButton.click()
         await this.onesieAddButton.click()
         await this.redTShirtAddButton.click()
+    }
+
+    async assertAllProductsInCart() {
         await expect(this.shoppingCartBadgeIcon).toHaveText('6')
     }
 
@@ -85,10 +92,18 @@ export class ProductPage {
         await this.fleeceJacketRemoveButton.click()
         await this.onesieRemoveButton.click()
         await this.redTShirtRemoveButton.click()
+    }
+
+    async assertBadgeIcon() {
         await expect(this.shoppingCartBadgeIcon).toBeHidden
     }
 
     async goToCartPage() {
         await this.shoppingCartButton.click()
+    }
+
+    async logout() {
+        await this.menuButton.click()
+        await this.logoutButton.click()
     }
 }
