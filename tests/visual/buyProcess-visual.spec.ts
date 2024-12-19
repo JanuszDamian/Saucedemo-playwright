@@ -10,7 +10,7 @@ test.describe.only("Complete Page Visual Test", () => {
     let loginPage: LoginPage
     let productPage: ProductPage
     let cartPage: CartPage
-    let checkout: CheckoutPage
+    let checkoutPage: CheckoutPage
     let overviewPage: OverviewPage
     let completePage: CompletePage
 
@@ -18,7 +18,7 @@ test.describe.only("Complete Page Visual Test", () => {
         loginPage = new LoginPage(page)
         productPage = new ProductPage(page)
         cartPage = new CartPage(page)
-        checkout = new CheckoutPage(page)
+        checkoutPage = new CheckoutPage(page)
         overviewPage = new OverviewPage(page)
         completePage = new CompletePage(page)
 
@@ -30,9 +30,15 @@ test.describe.only("Complete Page Visual Test", () => {
     })
 
     test("Complete Page", async ({page}) => {
-        await checkout.fillForm("Tomasz","Damian","11-111")
+        await checkoutPage.fillForm("Tomasz","Damian","11-111")
         await overviewPage.finishProcess()
 
         await completePage.snapshotCompleteConfirm() 
+    })
+
+    test("CheckoutPage, continue without fill form", async ({page}) => {
+        await checkoutPage.continueWithoutFill()
+
+        await checkoutPage.snapshotErrorMessage()
     })
 })
