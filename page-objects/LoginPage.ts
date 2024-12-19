@@ -1,6 +1,6 @@
 import {expect, Locator, Page } from '@playwright/test'
 
-export default class LoginPage {
+export class LoginPage {
     // Define Selectors
     readonly page: Page
     readonly usernameInput: Locator

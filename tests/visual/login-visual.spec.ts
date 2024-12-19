@@ -1,7 +1,7 @@
 import {test} from '@playwright/test'
-import LoginPage from '../../page-objects/LoginPage'
+import {LoginPage} from '../../page-objects/LoginPage'
 
-test.describe.only("Login Page Visual Test", () => {
+test.describe("Login Page Visual Test", () => {
     let loginPage: LoginPage
 
     test.beforeEach(async ({page}) => {

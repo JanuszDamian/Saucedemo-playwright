@@ -30,4 +30,7 @@ export class CompletePage {
         await this.backButton.click()
     }
 
+    async snapshotCompleteConfirm() {
+        expect(await this.completeConfirm.screenshot()).toMatchSnapshot('complete confirm-form.png')
+    }
 }

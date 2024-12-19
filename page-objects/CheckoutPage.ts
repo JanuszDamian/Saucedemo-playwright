@@ -45,5 +45,8 @@ export class CheckoutPage {
         await this.continuceButton.click()
     }
 
+    async snapshotErrorMessage() {
+        expect(await this.errorMessage.screenshot()).toMatchSnapshot('Fill form-error.png')
+    }
 
 }
