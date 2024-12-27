@@ -16,24 +16,24 @@ test.describe.parallel('Login flow', () => {
     })
 
     // Negative Scenario
-    test('Negative scenario for invalid username', async ({page}) => {
+    test('Negative scenario for invalid username', async () => {
         await loginPage.login("invalid username", "secret_sauce")
         await loginPage.assertErrorMessage()
     })
 
-    test('Negative scenario for invalid password', async ({page}) => {
+    test('Negative scenario for invalid password', async () => {
         await loginPage.login("standard_user", "invalid password")
         await loginPage.assertErrorMessage()
     })
 
-    test('Negative scenario for invalid username and invalid password', async ({page}) => {
+    test('Negative scenario for invalid username and invalid password', async () => {
         await loginPage.login("invalid username", "invalid password")
         await loginPage.assertErrorMessage()
     })
 
     // Positive Scenario
 
-    test('Positive scenario, correct username and password', async ({page}) => {
+    test('Positive scenario, correct username and password', async () => {
         await loginPage.login("standard_user", "secret_sauce")
         await productPage.assertLoginUser()
     })

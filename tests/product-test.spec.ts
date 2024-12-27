@@ -18,7 +18,7 @@ test.describe.parallel('ProductPage tests', () => {
 
     // Positive Scenario
 
-    test('Add/remove all products to/from cart ', async ({page}) => {
+    test('Add/remove all products to/from cart ', async () => {
         await productPage.addAllProductsToCart()
         await productPage.assertAllProductsInCart()
         await productPage.removeAllProductsFromCart()

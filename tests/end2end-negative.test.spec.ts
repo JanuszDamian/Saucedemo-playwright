@@ -30,19 +30,19 @@ test.describe.parallel('Negative tests', () => {
 
     // Negative Scenario
 
-    test('Add products to cart', async ({page}) => {
+    test('Add products to cart', async () => {
         await productPage.addAllProductsToCart()
         await productPage.assertAllProductsInCart()
     })
 
-    test('Remove product from cart', async ({page}) => {
+    test('Remove product from cart', async () => {
         await productPage.addAllProductsToCart()
         await productPage.removeAllProductsFromCart()
         await productPage.assertBadgeIcon()
     })
 
     // After Hook
-    test.afterEach(async ({ page }) => {
+    test.afterEach(async () => {
         await productPage.logout()
         await loginPage.assertloginPage()
     })

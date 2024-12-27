@@ -6,7 +6,7 @@ import { CheckoutPage } from '../../page-objects/CheckoutPage'
 import { OverviewPage } from '../../page-objects/OverviewPage'
 import { CompletePage } from '../../page-objects/CompletePage'
 
-test.describe.only("Complete Page Visual Test", () => {
+test.describe("Complete Page Visual Test", () => {
     let loginPage: LoginPage
     let productPage: ProductPage
     let cartPage: CartPage
